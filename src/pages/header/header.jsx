@@ -50,7 +50,7 @@ const Header = () => {
   );
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-white sticky top-0 z-50">
       <div className="border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-12 text-sm">
@@ -112,7 +112,9 @@ const Header = () => {
             </button>
             <NavLink
               to="/cart"
-              className="p-2 hover:bg-gray-100 flex gap-2 items-center rounded-lg transition-colors relative"
+              className={({ isActive }) => `p-2 hover:bg-gray-100 flex gap-2 items-center rounded-lg transition-colors relative ${
+                isActive ? 'bg-gray-100 text-purple-600' : ''
+              }`}
             >
               <CartIcon />
               <span className="font-medium hidden sm:inline">Savat</span>
