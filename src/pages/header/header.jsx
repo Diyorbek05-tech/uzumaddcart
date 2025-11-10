@@ -111,7 +111,7 @@ const Header = () => {
             <div className="relative">
               <input
                 type="text"
-                placeholder="Mahsulotlar va turkumlar izlash"
+                placeholder={t('header.search')}
                 className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               />
               <button className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-purple-600">

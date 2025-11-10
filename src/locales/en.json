@@ -7,6 +7,7 @@
         "punkt":"Open a pickup point",
         "question":"Question-answer",
         "orders":"Orders",
+        "search":"Search",
         "login":"Login",
         "liked":"Favorites",
         "cart":"Cart",
@@ -38,5 +39,19 @@
         "secrecyPolitic":"Privacy Policy",
         "takeProfit":"Terms of profit",
         "mchj":"2025 XX LLC \"UZUM MARKET\". TIN 309376127. All rights reserved"
+    },
+    "cart":{
+        "svat":"Cart",
+        "clearCart":"Clear cart",
+        "total":"Total",
+        "price":"Price",
+        "delivery":"Delivery",
+        "all":"Total",
+        "order":"Place order",
+        "continueBuy":"Continue shopping",
+        "backToMain":"Back to main page",
+        "free":"Free",
+        "cartFree":"Your cart is empty",
+        "addProduct":"To add a product, return to the main page"
     }
 }

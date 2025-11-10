@@ -7,6 +7,7 @@
         "punkt":"Topshirish punktini ochish",
         "question":"Savol-javob",
         "orders":"Buyurtmalar",
+        "search":"Qidiruv",
         "login":"Kirish",
         "liked":"Saralanganar",
         "cart":"Savat",
@@ -38,5 +39,19 @@
         "secrecyPolitic":"Maxfiylik siyosati",
         "takeProfit":"Foyda olish shartlari",
         "mchj":"2025 XX MCHJ \"UZUM MARKET\". STIR 309376127. Barcha huquqlar himoyalangan"
+    },
+    "cart":{
+        "svat":"Savat",
+        "clearCart":"Savat tozalash",
+        "total":"Jami",
+        "price":"Narxi",
+        "delivery":"Yetkazib berish",
+        "all":"Jami",
+        "order":"Buyurtma berish",
+        "continueBuy":"Xaridni davom ettirish",
+        "backToMain":"Bosh sahifaga qaytish",
+        "free":"Bepul",
+        "cartFree":"Savat bo'sh",
+        "addProduct":"Mahsulot qo'shish uchun asosiy sahifaga qayting"
     }
 }

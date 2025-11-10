@@ -17,7 +17,7 @@ const Cart = () => {
     <div className="min-h-screen bg-gray-50 py-6">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold">Savat</h1>
+          <h1 className="text-2xl font-bold">{t('cart.svat')}</h1>
           {cartItems.length > 0 && (
             <button
               onClick={() => {
@@ -27,20 +27,20 @@ const Cart = () => {
               }}
               className="text-red-600 hover:text-red-700 font-medium text-sm"
             >
-              Savatni tozalash
+              {t('cart.clearCart')}
             </button>
           )}
         </div>
 
         {cartItems.length === 0 ? (
           <div className="bg-white rounded-lg shadow p-12 text-center">
-            <p className="text-xl text-gray-500">Savat bo'sh</p>
-            <p className="text-gray-400 mt-2">Mahsulotlar qo'shish uchun asosiy sahifaga qaytib keling</p>
+            <p className="text-xl text-gray-500">{t('cart.cartFree')}</p>
+            <p className="text-gray-400 mt-2">{t('cart.addProduct')}</p>
             <Link
               to="/"
               className="inline-block mt-4 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-lg"
             >
-              Asosiy sahifaga
+              {t('cart.backToMain')}
             </Link>
           </div>
         ) : (
@@ -98,43 +98,43 @@ const Cart = () => {
 
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow p-6 sticky top-4 h-fit">
-                <h2 className="text-lg font-bold mb-4">Jami hisoblash</h2>
+                <h2 className="text-lg font-bold mb-4">{t('cart.total')}</h2>
 
                 <div className="space-y-3 mb-6 border-b pb-4">
                   <div className="flex justify-between text-gray-600">
-                    <span>Mahsulotlar</span>
+                    <span>{t('home.products')}</span>
                     <span className="font-medium">
                       {cartItems.reduce((sum, item) => sum + item.quantity, 0)} ta
                     </span>
                   </div>
                   <div className="flex justify-between text-gray-600">
-                    <span>Narxi</span>
+                    <span>{t('cart.price')}</span>
                     <span className="font-medium">
                       {Math.round(totalPrice).toLocaleString()} so'm
                     </span>
                   </div>
                   <div className="flex justify-between text-gray-600">
-                    <span>Yetkazib berish</span>
-                    <span className="text-green-600 font-medium">Bepul</span>
+                    <span>{t('cart.delivery')}</span>
+                    <span className="text-green-600 font-medium">{t('cart.free')}</span>
                   </div>
                 </div>
 
                 <div className="flex justify-between items-center mb-6 text-lg font-bold border-b pb-4">
-                  <span>Jami:</span>
+                  <span>{t('cart.total')} :</span>
                   <span className="text-purple-600 text-xl">
                     {Math.round(totalPrice).toLocaleString()} so'm
                   </span>
                 </div>
 
                 <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg transition-colors mb-3">
-                  Buyurtma berish
+                  {t('cart.order')}
                 </button>
 
                 <Link
                   to="/"
                   className="w-full block text-center bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors"
                 >
-                  Xarid davom etish
+                  {t('cart.continueBuy')}
                 </Link>
               </div>
             </div>
