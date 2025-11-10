@@ -1,0 +1,42 @@
+{
+    "header": {
+        "catalog":"Katalog",
+        "city":"Toshkent",
+        "punkts":"Topshirish punktlari",
+        "seller":"Sotuvchi bo'lish",
+        "punkt":"Topshirish punktini ochish",
+        "question":"Savol-javob",
+        "orders":"Buyurtmalar",
+        "login":"Kirish",
+        "liked":"Saralanganar",
+        "cart":"Savat",
+        "weekt":"Hafta tovarlari",
+        "wintert":"Qishki kolleksiya",
+        "hobby":"Hobbi va ijod",
+        "phone":"Smartfonlar",
+        "electro":"Elektr jihozlari",
+        "maishiy":"Maishiy texnika",
+        "acsesuar":"Aksessuarlar",
+        "more":"Yana"
+    },
+    "home":{
+        "products":"Mahsulotlar",
+        "baholash":"ta baholash",
+        "moth":"oyiga",
+        "toCart":"Savatga"
+    },
+    "footer":{
+        "abouUs":"Biz haqimizda",
+        "vacancies":"Bo'sh ish o'rinlari",
+        "foydali":"Foydali havolalar",
+        "contactWithUs":"Biz bilan bog'lanish",
+        "tadbirlar":"Tadbirlarga",
+        "backAtSeller":"Sotuvchiga kabinetiga qaytish",
+        "sellAtUzum":"Uzumda sotish",
+        "takeApp":"Ilovani yuklab oling",
+        "uzumAtSocial":"Uzum ijtimoiy tarmoqlarda",
+        "secrecyPolitic":"Maxfiylik siyosati",
+        "takeProfit":"Foyda olish shartlari",
+        "mchj":"2025 XX MCHJ \"UZUM MARKET\". STIR 309376127. Barcha huquqlar himoyalangan"
+    }
+}

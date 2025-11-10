@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../cartContext/CartContext';
+import { useTranslation } from 'react-i18next'; 
 
 const BannerSlider2 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -94,6 +95,7 @@ const BannerSlider2 = () => {
 };
 
 const HomePage = () => {
+  const{ t } = useTranslation();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [productQuantities, setProductQuantities] = useState({});
@@ -176,7 +178,7 @@ const HomePage = () => {
 
       <div className="py-6">
         <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-2xl font-bold mb-6">Mahsulotlar</h1>
+          <h1 className="text-2xl font-bold mb-6">{t('home.products')}</h1>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {products.map((product) => {
@@ -215,7 +217,7 @@ const HomePage = () => {
                     <div className="flex items-center gap-1 mb-3">
                       <StarIcon />
                       <span className="text-sm font-medium">{product.rating}</span>
-                      <span className="text-xs text-gray-500">({product.stock} ta baholash)</span>
+                      <span className="text-xs text-gray-500">({product.stock} {t('home.baholash')})</span>
                     </div>
 
                     <div className="flex-1"></div>
@@ -223,7 +225,7 @@ const HomePage = () => {
                     <div className="mb-2">
                       <div className="inline-block bg-yellow-50 px-2 py-1 rounded-md">
                         <span className="text-xs font-semibold text-gray-900">
-                          {monthlyPayment.toLocaleString()} so'm/oyiga
+                          {monthlyPayment.toLocaleString()} so'm/{t('home.moth')}
                         </span>
                       </div>
                     </div>
@@ -245,7 +247,7 @@ const HomePage = () => {
                         className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors"
                       >
                         <CartIcon />
-                        <span>Savatga</span>
+                        <span>{t('home.toCart')}</span>
                       </button>
                     ) : (
                       <div className="flex items-center gap-2 border border-purple-600 rounded-xl bg-purple-50">

@@ -1,9 +1,11 @@
 import React from 'react';
 import { useCart } from '../cartContext/CartContext';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, totalPrice, clearCart } = useCart();
+  const { t } = useTranslation();
 
   const TrashIcon = () => (
     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

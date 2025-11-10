@@ -1,0 +1,42 @@
+{
+    "header": {
+        "catalog":"Catalog",
+        "city":"Tashkent",
+        "punkts":"Pickup points",
+        "seller":"Become a seller",
+        "punkt":"Open a pickup point",
+        "question":"Question-answer",
+        "orders":"Orders",
+        "login":"Login",
+        "liked":"Favorites",
+        "cart":"Cart",
+        "weekt":"Products of the week",
+        "wintert":"Winter collection",
+        "hobby":"Hobbies and creativity",
+        "phone":"Smartphones",
+        "electro":"Electronics",
+        "maishiy":"Home appliances",
+        "acsesuar":"Accessories",
+        "more":"More"
+    },
+    "home":{
+        "products":"Products",
+        "baholash":"rating",
+        "moth":"per month",
+        "toCart":"Add to cart"
+    },
+    "footer":{
+        "abouUs":"About us",
+        "vacancies":"Vacancies",
+        "foydali":"Useful links",
+        "contactWithUs":"Contact us",
+        "tadbirlar":"Events",
+        "backAtSeller":"Return to seller's cabinet",
+        "sellAtUzum":"Sell on Uzum",
+        "takeApp":"Download the app",
+        "uzumAtSocial":"Uzum on social networks",
+        "secrecyPolitic":"Privacy Policy",
+        "takeProfit":"Terms of profit",
+        "mchj":"2025 XX LLC \"UZUM MARKET\". TIN 309376127. All rights reserved"
+    }
+}

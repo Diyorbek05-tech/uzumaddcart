@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useCart } from '../../cartContext/CartContext';
 import Logo from '../../assets/images/logo.svg';
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
+  const { t, i18n } = useTranslation();
   const { cartCount } = useCart();
+
+  useEffect(() => {
+    const savedLang = localStorage.getItem('lang');
+    if (savedLang) {
+      i18n.changeLanguage(savedLang);
+    }
+  }, []);
+
+  function changeLanguage(lang) {
+    i18n.changeLanguage(lang);
+    localStorage.setItem('lang', lang);
+  }
+
+  const handleLanguageChange = (event) => {
+    changeLanguage(event.target.value);
+  };
 
   const SearchIcon = () => (
     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,20 +74,21 @@ const Header = () => {
           <div className="flex items-center justify-between h-12 text-sm">
             <div className="flex items-center gap-2 cursor-pointer hover:text-purple-600">
               <MapPinIcon />
-              <span className="font-medium">Toshkent</span>
+              <span className="font-medium">{t('header.city')}</span>
               <ChevronDownIcon />
             </div>
 
             <div className="flex items-center gap-6">
-              <a href="#" className="text-gray-600 hover:text-purple-600">Topshirish punktlari</a>
-              <a href="#" className="text-purple-600 hover:text-purple-700 font-medium">Sotuvchi bo'lish</a>
-              <a href="#" className="text-gray-600 hover:text-purple-600">Topshirish punktini ochish</a>
-              <a href="#" className="text-gray-600 hover:text-purple-600">Savol-javob</a>
-              <a href="#" className="text-gray-600 hover:text-purple-600">Buyurtmalarim</a>
-              <div className="flex items-center gap-2 cursor-pointer hover:text-purple-600">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Flag_of_Uzbekistan.svg" alt="UZ" className="w-5 h-3" />
-                <span>O'zbekcha</span>
-              </div>
+              <a href="#" className="text-gray-600 hover:text-purple-600">{t('header.punkts')}</a>
+              <a href="#" className="text-purple-600 hover:text-purple-700 font-medium">{t('header.seller')}</a>
+              <a href="#" className="text-gray-600 hover:text-purple-600">{t('header.punkt')}</a>
+              <a href="#" className="text-gray-600 hover:text-purple-600">{t('header.question')}</a>
+              <a href="#" className="text-gray-600 hover:text-purple-600">{t('header.orders')}</a>
+              <select value={i18n.language} onChange={handleLanguageChange} className="flex items-center gap-2 cursor-pointer hover:text-purple-600">
+                <option value="uz">UZ</option>
+                <option value="ru">RU</option>
+                <option value="en">EN</option>  
+              </select>
             </div>
           </div>
         </div>
@@ -85,7 +104,7 @@ const Header = () => {
 
           <button className="flex items-center gap-2 px-6 py-3 bg-purple-100 text-purple-600 rounded-xl hover:bg-purple-200 transition-colors">
             <MenuIcon />
-            <span className="font-medium">Katalog</span>
+            <span className="font-medium">{t('header.catalog')}</span>
           </button>
 
           <div className="flex-1 max-w-2xl mx-8">
@@ -104,11 +123,11 @@ const Header = () => {
           <div className="flex items-center gap-4">
             <button className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100 rounded-lg transition-colors">
               <UserIcon />
-              <span className="font-medium hidden sm:inline">Kirish</span>
+              <span className="font-medium hidden sm:inline">{t('header.login')}</span>
             </button>
             <button className="p-2 hover:bg-gray-100 flex gap-2 items-center rounded-lg transition-colors relative">
               <HeartIcon />
-              <span className="font-medium hidden sm:inline">Saralangan</span>
+              <span className="font-medium hidden sm:inline">{t('header.liked')}</span>
             </button>
             <NavLink
               to="/cart"
@@ -117,7 +136,7 @@ const Header = () => {
               }`}
             >
               <CartIcon />
-              <span className="font-medium hidden sm:inline">Savat</span>
+              <span className="font-medium hidden sm:inline">{t('header.cart')}</span>
               {cartCount > 0 && (
                 <span className="absolute -right-1 -top-1 w-5 h-5 bg-purple-600 text-white text-xs font-bold rounded-full flex items-center justify-center">
                   {cartCount}
@@ -133,34 +152,34 @@ const Header = () => {
           <div className="flex items-center justify-between py-3 overflow-x-auto">
             <a href="#" className="flex items-center gap-2 text-sm whitespace-nowrap hover:text-purple-600">
               <span className="text-lg">🎉</span>
-              <span>Hafta tovarlari</span>
+              <span>{t('header.weekt')}</span>
             </a>
             <a href="#" className="flex items-center gap-2 text-sm whitespace-nowrap hover:text-purple-600">
               <span className="text-lg">🍎</span>
-              <span>Qishki to'plamli</span>
+              <span>{t('header.wintert')}</span>
             </a>
             <a href="#" className="flex items-center gap-2 text-sm whitespace-nowrap hover:text-purple-600">
               <span className="text-lg">🎨</span>
-              <span>Hobbi va ijod</span>
+              <span>{t('header.hobby')}</span>
             </a>
             <a href="#" className="flex items-center gap-2 text-sm whitespace-nowrap hover:text-purple-600">
               <span className="text-lg">📱</span>
-              <span>Smartfonlari</span>
+              <span>{t('header.phone')}</span>
             </a>
             <a href="#" className="flex items-center gap-2 text-sm whitespace-nowrap hover:text-purple-600">
               <span className="text-lg">💻</span>
-              <span>Elektronika</span>
+              <span>{t('header.electro')}</span>
             </a>
             <a href="#" className="flex items-center gap-2 text-sm whitespace-nowrap hover:text-purple-600">
               <span className="text-lg">🏠</span>
-              <span>Maishiy texnika</span>
+              <span>{t('header.maishiy')}</span>
             </a>
             <a href="#" className="flex items-center gap-2 text-sm whitespace-nowrap hover:text-purple-600">
               <span className="text-lg">💄</span>
-              <span>Aksessuarlar</span>
+              <span>{t('header.acsesuar')}</span>
             </a>
             <a href="#" className="flex items-center gap-2 text-sm whitespace-nowrap text-gray-600 hover:text-purple-600">
-              <span>Yana</span>
+              <span>{t('header.more')}</span>
               <ChevronDownIcon />
             </a>
           </div>
@@ -169,5 +188,6 @@ const Header = () => {
     </div>
   );
 };
+
 
 export default Header;
