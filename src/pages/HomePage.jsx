@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useCart } from '../cartContext/CartContext';
 import { useTranslation } from 'react-i18next'; 
 
@@ -95,11 +96,10 @@ const BannerSlider2 = () => {
 };
 
 const HomePage = () => {
-  const{ t } = useTranslation();
+  const { t } = useTranslation();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [productQuantities, setProductQuantities] = useState({});
-  const { addToCart, updateQuantity, removeFromCart } = useCart();
+  const { addToCart, updateQuantity, removeFromCart, cartItems } = useCart();
 
   useEffect(() => {
     fetch('https://dummyjson.com/products?limit=20')
@@ -132,42 +132,33 @@ const HomePage = () => {
     </svg>
   );
 
+  const getProductQuantity = (productId) => {
+    const item = cartItems.find(item => item.id === productId);
+    return item ? item.quantity : 0;
+  };
+
   const handleAddToCart = (product) => {
     addToCart(product);
-    setProductQuantities(prev => ({
-      ...prev,
-      [product.id]: (prev[product.id] || 0) + 1
-    }));
   };
 
   const handleIncrease = (productId) => {
-    setProductQuantities(prev => ({
-      ...prev,
-      [productId]: prev[productId] + 1
-    }));
-    updateQuantity(productId, (productQuantities[productId] || 0) + 1);
+    const currentQuantity = getProductQuantity(productId);
+    updateQuantity(productId, currentQuantity + 1);
   };
 
   const handleDecrease = (productId) => {
-    if ((productQuantities[productId] || 0) > 1) {
-      setProductQuantities(prev => ({
-        ...prev,
-        [productId]: prev[productId] - 1
-      }));
-      updateQuantity(productId, (productQuantities[productId] || 0) - 1);
+    const currentQuantity = getProductQuantity(productId);
+    if (currentQuantity > 1) {
+      updateQuantity(productId, currentQuantity - 1);
     } else {
       removeFromCart(productId);
-      setProductQuantities(prev => ({
-        ...prev,
-        [productId]: 0
-      }));
     }
   };
 
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl text-purple-600">Yuklanmoqda...</div>
+        <div className="text-xl text-purple-600">{t('home.loading')}</div>
       </div>
     );
   }
@@ -185,62 +176,71 @@ const HomePage = () => {
               const discount = Math.round(product.discountPercentage);
               const originalPrice = Math.round(product.price / (1 - discount / 100));
               const monthlyPayment = Math.round(product.price / 12);
-              const quantity = productQuantities[product.id] || 0;
+              const quantity = getProductQuantity(product.id);
 
               return (
                 <div key={product.id} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col">
-                  <div className="relative aspect-square p-4 bg-gray-50">
-                    <button className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 z-10">
-                      <HeartIcon filled={false} />
-                    </button>
-                    
-                    <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
-                      {discount > 0 && (
-                        <span className="bg-yellow-400 text-gray-900 text-xs px-2 py-1 rounded-md font-bold">
-                          -{discount}%
-                        </span>
-                      )}
-                    </div>
-
-                    <img
-                      src={product.thumbnail}
-                      alt={product.title}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-
-                  <div className="p-3 flex-1 flex flex-col">
-                    <h3 className="text-sm font-medium text-gray-800 mb-2 line-clamp-2 min-h-[40px]">
-                      {product.title}
-                    </h3>
-
-                    <div className="flex items-center gap-1 mb-3">
-                      <StarIcon />
-                      <span className="text-sm font-medium">{product.rating}</span>
-                      <span className="text-xs text-gray-500">({product.stock} {t('home.baholash')})</span>
-                    </div>
-
-                    <div className="flex-1"></div>
-
-                    <div className="mb-2">
-                      <div className="inline-block bg-yellow-50 px-2 py-1 rounded-md">
-                        <span className="text-xs font-semibold text-gray-900">
-                          {monthlyPayment.toLocaleString()} so'm/{t('home.moth')}
-                        </span>
+                  {/* Rasm va tasvif Link ichida */}
+                  <Link to={`/product/${product.id}`} className="flex flex-col flex-1">
+                    <div className="relative aspect-square p-4 bg-gray-50">
+                      <button 
+                        onClick={(e) => e.preventDefault()}
+                        className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md hover:bg-gray-50 z-10"
+                      >
+                        <HeartIcon filled={false} />
+                      </button>
+                      
+                      <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
+                        {discount > 0 && (
+                          <span className="bg-yellow-400 text-gray-900 text-xs px-2 py-1 rounded-md font-bold">
+                            -{discount}%
+                          </span>
+                        )}
                       </div>
+
+                      <img
+                        src={product.thumbnail}
+                        alt={product.title}
+                        className="w-full h-full object-contain"
+                      />
                     </div>
 
-                    <div className="mb-3">
-                      {discount > 0 && (
-                        <div className="text-xs text-gray-400 line-through mb-1">
-                          {originalPrice.toLocaleString()} so'm
+                    <div className="p-3 flex-1 flex flex-col">
+                      <h3 className="text-sm font-medium text-gray-800 mb-2 line-clamp-2 min-h-[40px]">
+                        {product.title}
+                      </h3>
+
+                      <div className="flex items-center gap-1 mb-3">
+                        <StarIcon />
+                        <span className="text-sm font-medium">{product.rating}</span>
+                        <span className="text-xs text-gray-500">({product.stock} {t('home.baholash')})</span>
+                      </div>
+
+                      <div className="flex-1"></div>
+
+                      <div className="mb-2">
+                        <div className="inline-block bg-yellow-50 px-2 py-1 rounded-md">
+                          <span className="text-xs font-semibold text-gray-900">
+                            {monthlyPayment.toLocaleString()} so'm/{t('home.moth')}
+                          </span>
                         </div>
-                      )}
-                      <div className="text-lg font-bold text-gray-900">
-                        {Math.round(product.price).toLocaleString()} so'm
+                      </div>
+
+                      <div className="mb-3">
+                        {discount > 0 && (
+                          <div className="text-xs text-gray-400 line-through mb-1">
+                            {originalPrice.toLocaleString()} so'm
+                          </div>
+                        )}
+                        <div className="text-lg font-bold text-gray-900">
+                          {Math.round(product.price).toLocaleString()} so'm
+                        </div>
                       </div>
                     </div>
+                  </Link>
 
+                  {/* Savat tugmasi Link dan tashqarida */}
+                  <div className="p-3 pt-0">
                     {quantity === 0 ? (
                       <button 
                         onClick={() => handleAddToCart(product)}

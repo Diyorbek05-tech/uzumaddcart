@@ -24,7 +24,8 @@
         "products":"Products",
         "baholash":"rating",
         "moth":"per month",
-        "toCart":"Add to cart"
+        "toCart":"Add to cart",
+        "loading":"Loading..."
     },
     "footer":{
         "abouUs":"About us",
@@ -53,5 +54,13 @@
         "free":"Free",
         "cartFree":"Your cart is empty",
         "addProduct":"To add a product, return to the main page"
-    }
-}
+    },
+    "detail":{
+    "notFound":"Product not found",
+    "back":"Back to catalog",
+    "mothPaymet":"monthly payment",
+    "stock":"Stock availability",
+    "sales":"Sales",
+    "discount":"Discount",
+    "comments":"Comments"
+}}

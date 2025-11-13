@@ -63,7 +63,10 @@ export const CartProvider = ({ children }) => {
     setCartItems([]);
   };
 
-  const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  // ✅ ALOHIDA MAHSULOTLAR SONI (header badge uchun)
+  // Bitta mahsulot nechta bo'lsa ham 1 ta hisoblanadi
+  const cartCount = cartItems.length;
+  
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0

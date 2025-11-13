@@ -24,7 +24,8 @@
         "products":"Mahsulotlar",
         "baholash":"ta baholash",
         "moth":"oyiga",
-        "toCart":"Savatga"
+        "toCart":"Savatga",
+        "loading":"Yuklanmoqda..."
     },
     "footer":{
         "abouUs":"Biz haqimizda",
@@ -53,5 +54,13 @@
         "free":"Bepul",
         "cartFree":"Savat bo'sh",
         "addProduct":"Mahsulot qo'shish uchun asosiy sahifaga qayting"
-    }
-}
+    },
+    "detail":{
+    "notFound":"Mahsulot topilmadi",
+    "back":"Katalogga qaytish",
+    "mothPaymet":"oyiga to'lov",
+    "stock":"Omborda mavjudligi",
+    "sales":"Sotuvlar",
+    "discount":"Chegirma",
+    "comments":"Izohlar"
+}}
